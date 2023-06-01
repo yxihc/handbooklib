@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cp_grid_item_layout"
+    android:layout_width="wrap_content"
+    android:layout_height="?attr/cpListItemHeight"
+    android:foreground="?attr/selectableItemBackground">
+
+    <TextView
+        android:id="@+id/cp_gird_item_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/tv_check_no"
+        android:gravity="center"
+        android:paddingLeft="15dp"
+        android:paddingTop="5dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="5dp"
+        android:textColor="#999999"
+        android:textSize="14sp" />
+</FrameLayout>

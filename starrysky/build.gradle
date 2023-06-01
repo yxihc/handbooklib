@@ -1,0 +1,78 @@
+apply plugin: 'com.android.library'
+apply plugin: 'maven'
+android {
+    compileSdkVersion 28
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 28
+        versionCode 217
+        versionName "2.1.7"
+
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_8
+            targetCompatibility JavaVersion.VERSION_1_8
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //noinspection GradleCompatible
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+
+    api "com.google.android.exoplayer:exoplayer-core:2.9.4"
+    api "com.google.android.exoplayer:extension-mediasession:2.9.4"
+    api "com.google.android.exoplayer:exoplayer-dash:2.9.4"   //dash 支持
+    api "com.google.android.exoplayer:exoplayer-hls:2.9.4"    //hls 支持
+    api "com.google.android.exoplayer:exoplayer-smoothstreaming:2.9.4" //smoothstreaming支持
+    api "com.google.android.exoplayer:extension-rtmp:2.9.4"  //rtmp 支持
+    api "com.google.android.exoplayer:exoplayer-ui:2.9.4"  //rtmp 支持
+}
+
+
+
+
+
+
+
+def MAVEN_LOCAL_PATH = 'http://heletech.cn:8081/nexus/content/repositories/releases'
+//版本号
+def VERSION = '1.0.0'
+//包名
+def GROUP_ID = 'com.taopao.muzi'
+//aar包名称
+def ARTIFACT_ID = 'starrysky'
+//Maven私服账号
+def ACCOUNT = 'dev'
+//Maven私服密码
+def PWD = 'dev123'
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: MAVEN_LOCAL_PATH) {
+                //账号密码
+                authentication(userName: ACCOUNT, password: PWD)
+            }
+            pom.groupId = GROUP_ID
+            pom.artifactId = ARTIFACT_ID
+            pom.version = VERSION
+            pom.packaging = 'aar'
+        }
+    }
+}
+
+
+
